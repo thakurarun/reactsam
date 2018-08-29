@@ -3,7 +3,6 @@ import _ from "lodash";
 export class Navbar extends Component {
   constructor() {
     super();
-    this.navigate = this.navigate.bind(this);
     this.state = {
       navs: [
         {
@@ -35,6 +34,7 @@ export class Navbar extends Component {
     this.setState({
       navs: this.state.navs
     });
+    this.props.onChange(selectedPath.path);
   };
 
   render() {
@@ -47,7 +47,7 @@ export class Navbar extends Component {
                 <a
                   className={nav.active ? "nav-link active" : "nav-link"}
                   href="javascript:void(0)"
-                  onClick={nav.onActive}
+                  onClick={e => nav.onActive()}
                 >
                   {nav.label}
                 </a>
